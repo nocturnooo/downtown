@@ -1,0 +1,6 @@
+Godot Engine v3.2.3.stable.mono.official - https://godotengine.org
+OpenGL ES 3.0 Renderer: Radeon RX 590 Series
+ 
+Mono: Log file is: 'C:\Users\botoa\AppData\Roaming/Godot/mono/mono_logs/2020_11_16 07.42.34 (12352).txt'
+**ERROR**: Cannot instance script because the project assembly is not loaded. Script: 'res://Scripts/MainMenu.cs'.
+   At: modules/mono/csharp_script.cpp:2939:can_instance() - Method failed. Returning: __null
