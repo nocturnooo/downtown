@@ -2,6 +2,8 @@ using Godot;
 
 public class Player3D : KinematicBody
 {
+    public bool hasKey = false;
+
     PackedScene bullet;
 
     private float health = 20;

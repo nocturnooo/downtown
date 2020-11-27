@@ -3,21 +3,36 @@ using Godot;
 public class WorldGenerator : Spatial
 {
     PackedScene tree;
+    PackedScene key;
+    PackedScene door;
 
     [Export]
     private int amount = 30;
 
     public override void _Ready()
     {
+        // Seed randomizer
         GD.Randomize();
 
         tree = GD.Load<PackedScene>("res://Scenes3D/Tree3D.tscn");
+        key = GD.Load<PackedScene>("res://Scenes3D/Key3D.tscn");
+        door = GD.Load<PackedScene>("res://Scenes3d/Door3D.tscn");
+
+        // Instance trees
         for (int i = 0; i < amount; i++)
         {
             StaticBody instanceTree = (StaticBody)tree.Instance();
             instanceTree.Translation = new Vector3((float)GD.RandRange(-100, 100), 0, (float)GD.RandRange(100, -100));
             CallDeferred("add_child", instanceTree);
         }
-        
+
+        // Instance one time scenes
+        StaticBody instanceKey = (StaticBody)key.Instance();
+        instanceKey.Translation = new Vector3((float)GD.RandRange(-100, 100), 0, (float)GD.RandRange(100, -100));
+        CallDeferred("add_child", instanceKey);
+
+        StaticBody instanceDoor = (StaticBody)door.Instance();
+        instanceDoor.Translation = new Vector3((float)GD.RandRange(-100, 100), 0, (float)GD.RandRange(100, -100));
+        CallDeferred("add_child", instanceDoor);
     }
 }
