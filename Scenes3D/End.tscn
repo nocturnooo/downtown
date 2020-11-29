@@ -2,12 +2,12 @@
 
 [ext_resource path="res://Scenes3D/Player3D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes3D/GoldWorldGenerator.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Typewriter2D.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes3D/WorldGenerator.tscn" type="PackedScene" id=6]
 
-[node name="Main" type="Spatial"]
+[node name="End" type="Spatial"]
 
-[node name="WorldGenerator" parent="." instance=ExtResource( 6 )]
+[node name="GoldWorldGenerator" parent="." instance=ExtResource( 4 )]
 treeAmount = 500
 
 [node name="Player3D" parent="." instance=ExtResource( 2 )]
@@ -18,16 +18,12 @@ treeAmount = 500
 
 [node name="Text" parent="Typewriter2D" index="0"]
 text = "/*
- * KERNEL PANIC: FATAL EXCEPTION
+ * CONGRATULATIONS! [VDM-0038]
  *
- * You need to restart the simulation. Hold down the Power
- * button for several seconds or press the Restart button.
- *
- * If the error persists, contact the developer of <?softwareID>.
- *
+ * You made it through.
+ * 
  * ---
- * errC: unGURL:PNAF:RRLB:HERI:ELZB-IR
- * errCname: <?perspective-change#pw1616>
+ * ref[0]: VISA EGG XBOX jack 4 ) GOLF SKYPE egg LAPTOP - = _ \\ LAPTOP
  * ---
  */"
 

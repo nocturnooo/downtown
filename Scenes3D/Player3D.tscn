@@ -1,8 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Player3D.cs" type="Script" id=1]
-[ext_resource path="res://Assets/Gun.png" type="Texture" id=2]
-[ext_resource path="res://Animations/Shoot3D.tres" type="Animation" id=3]
 [ext_resource path="res://Sounds/hit.wav" type="AudioStream" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
@@ -31,12 +29,3 @@ stream = ExtResource( 4 )
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
 shape = SubResource( 2 )
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0.5, 0.08, -1.2 )
-offset = Vector2( 65, -30 )
-flip_h = true
-texture = ExtResource( 2 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Shoot3D = ExtResource( 3 )

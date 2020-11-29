@@ -14,7 +14,7 @@ public class Door3D : StaticBody
         {
             if (player.hasKey)
             {
-                GetTree().ChangeScene("Scenes3D/Main.tscn");
+                GetTree().ChangeScene("Scenes3D/End.tscn");
             }
         }
     }

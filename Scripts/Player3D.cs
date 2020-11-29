@@ -4,9 +4,6 @@ public class Player3D : KinematicBody
 {
     public bool hasKey = false;
 
-    PackedScene bullet;
-
-    private float health = 20;
     private ProgressBar healthBar;
     private ProgressBar staminaBar;
     private ProgressBar ammoBar;
@@ -14,31 +11,12 @@ public class Player3D : KinematicBody
     private int speed = 4;
     private float sens = 0.5f;
 
-    private bool canShoot = true;
-    private int ammo = 10;
-
-    private AnimationPlayer animationPlayer;
-
-    public float Health
-    {
-        get { return health; }
-        set
-        {
-            health = value; healthBar.Value = health;
-            healthBar.GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D").Play();
-            if (health <= 0) QueueFree();
-        }
-    }
-
     public override void _Ready()
     {
         healthBar = GetNode<ProgressBar>("../HUD/Overlay/HealthBar");
         staminaBar = GetNode<ProgressBar>("../HUD/Overlay/StaminaBar");
         ammoBar = GetNode<ProgressBar>("../HUD/Overlay/AmmoBar");
-
-        bullet = GD.Load<PackedScene>("res://Scenes3D/Bullet3D.tscn");
-
-        animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+        ammoBar.Value = 0;
 
         Input.SetMouseMode(Input.MouseMode.Captured);
     }
@@ -74,35 +52,5 @@ public class Player3D : KinematicBody
             else speed = 4;
         }
         else speed = 4;
-
-        ammoBar.Value = ammo;
-        if (ammo == 0) canShoot = false;
-        if (Input.IsKeyPressed((int)KeyList.R))
-        {
-            if (ammo < 10)
-            {
-                ammo = 10;
-                canShoot = true;
-            }
-        }
-    }
-
-    public override void _UnhandledInput(InputEvent @event)
-    {
-        if (@event is InputEventMouseButton mouseEvent)
-        {
-            if (mouseEvent.ButtonIndex == (int)ButtonList.Left && mouseEvent.Pressed)
-            {
-                if (canShoot)
-                {
-                    Bullet3D instanceBullet = (Bullet3D)bullet.Instance();
-                    ammo--;
-                    animationPlayer.Play("Shoot3D");
-                    instanceBullet.Translation = Translation; instanceBullet.Rotation = Transform.basis.y * 25;
-                    GetParent().AddChild(instanceBullet);
-                    GetTree().SetInputAsHandled();
-                }
-            }
-        }
     }
 }

@@ -5,10 +5,6 @@ public class WorldGenerator : Spatial
     PackedScene tree;
     PackedScene key;
     PackedScene door;
-    PackedScene enemy;
-
-    [Export]
-    private int enemyAmount = 10;
 
     [Export]
     private int treeAmount = 200;
@@ -21,7 +17,6 @@ public class WorldGenerator : Spatial
         tree = GD.Load<PackedScene>("res://Scenes3D/Tree3D.tscn");
         key = GD.Load<PackedScene>("res://Scenes3D/Key3D.tscn");
         door = GD.Load<PackedScene>("res://Scenes3D/Door3D.tscn");
-        enemy = GD.Load<PackedScene>("res://Scenes3D/Enemy3D.tscn");
 
         // Instance trees
         for (int i = 0; i < treeAmount; i++)
@@ -31,6 +26,7 @@ public class WorldGenerator : Spatial
             CallDeferred("add_child", instanceTree);
         }
 
+        
         // Instance one time scenes
         StaticBody instanceKey = (StaticBody)key.Instance();
         instanceKey.Translation = new Vector3((float)GD.RandRange(-100, 100), 0, (float)GD.RandRange(100, -100));
